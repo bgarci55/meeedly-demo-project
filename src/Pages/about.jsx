@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
-import './home.css';
-
+import { useState } from "react";
+import styles from './about.module.css';
+import HandleLike from '../LikeButton'
+import HandleDislike from '../DislikeButton'
 
 function About() {
+    const [count, setCount] = useState(0)
+
     return (
         <>
             <nav>
@@ -15,6 +19,11 @@ function About() {
             </nav>
 
             <h1> About Page </h1>
+
+            <div class = {styles.likeSection}>
+                <HandleLike />
+                <HandleDislike />
+            </div>
         </>
     )
 }
