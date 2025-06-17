@@ -1,0 +1,31 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+    width: 100%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: sticky;
+    /* background-color: aliceblue; */
+}
+
+.nav-items {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-items a,
+.nav-items p {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-items a:hover {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+}
