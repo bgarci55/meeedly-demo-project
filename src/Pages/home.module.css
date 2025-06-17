@@ -1,4 +1,4 @@
-button {
+.counterButton {
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
@@ -10,12 +10,12 @@ button {
     transition: border-color 0.25s;
   }
   
-  button:hover {
+  .counterButton:hover {
     border-color: #646cff;
   }
   
-  button:focus,
-  button:focus-visible {
+  .counterButton:focus,s
+  .counterButton:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
   }
 
@@ -32,13 +32,13 @@ nav {
     /* background-color: aliceblue; */
 }
 
-.nav-items {
+.navItems {
     display: flex;
     gap: 1rem;
 }
 
-.nav-items a,
-.nav-items p {
+.navItems a,
+.navItems p {
     text-decoration: none;
     font-size: 16px;
     padding: 10px 15px;
@@ -46,7 +46,7 @@ nav {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.nav-items a:hover {
+.navItems a:hover {
     background-color: rgb(255, 255, 255);
     color: #000000;
     transition: background-color 0.3s ease, color 0.3s ease;

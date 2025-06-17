@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState } from "react";
 import styles from './about.module.css';
-import HandleLike from '../LikeButton'
-import HandleDislike from '../DislikeButton'
+import LikeDislike from '../LikeButton';
+import CommentHandler from '../CommentThread';
+import Reply from '../ReplyButton'
+
 
 function About() {
     const [count, setCount] = useState(0)
@@ -11,7 +13,7 @@ function About() {
         <>
             <nav>
                 <h1> Countly </h1>
-                <div className='nav-items'>
+                <div className= {styles.navItems}>
                     <Link to="/">Home</Link>
                     <Link to="/about">About</Link>
                     <Link to="/settings">Settings</Link>
@@ -20,10 +22,9 @@ function About() {
 
             <h1> About Page </h1>
 
-            <div class = {styles.likeSection}>
-                <HandleLike />
-                <HandleDislike />
-            </div>
+            <CommentHandler className = {styles.commentSection}/>
+            
+
         </>
     )
 }

@@ -1,26 +1,136 @@
-.likeSection {
-    text-align: center;
-    display: flex;
-    justify-content: center;
+.profile {
+  display: flex;
+  /* background-color: aqua; */
+  align-items: center;
 }
 
-button {
-    /* border-radius: 1px; */
-    /* border: 1px solid transparent; */
+.profilePic {
+  display: flex;
+  border-radius: 50%;
+}
+
+.profileContents {
+
+  padding-left: 10px;
+}
+
+.commentSection {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    width: 600px;
+    margin: auto;
+    color: black;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+    padding: 2%;
+}
+
+
+.comment {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    background-color: rgb(248, 248, 248);
+    width: auto;
+    margin: auto;
+    color: black;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+.commentSection h1 {
+    font-size: large;
+    text-align: left;
+    margin:auto;
+}
+
+.commentSection p {
+  font-size: medium;
+  text-align: left;
+}
+
+.timeStamp {
+  font-size: medium;
+  text-align: left;
+  margin: auto;
+}
+
+.likeSection{
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+}
+
+.likeButtons {
+    border-radius: 1px;
+    border: 1px solid transparent;
     padding: 0.3em .3em;
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
     cursor: pointer;
-    transition: border-color 0.25s;
+    background-color: rgb(255, 255, 255);
+    color:grey;
   }
   
-  button:hover {
-    border-color: #646cff;
+  .likeButtons:hover {
+    color: #000000;
   }
+
+  .likedButtons {
+    border-radius: 1px;
+    border: 1px solid transparent;
+    padding: 0.3em .3em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    background-color: rgb(216, 216, 216);
+    color: black;
+  }
+
   
   /* button:focus,
   button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
   }
    */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+    width: 100%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: sticky;
+    /* background-color: aliceblue; */
+}
+
+.navItems {
+    display: flex;
+    gap: 1rem;
+}
+
+.navItems a,
+.navItems p {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navItems a:hover {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+.replySection {
+  
+}
