@@ -1,0 +1,16 @@
+.replyButton {
+    color: rgb(102, 102, 102);
+    background-color: transparent;
+    border: transparent;
+}
+
+.replyButton:hover {
+    color: black;
+}
+
+.buttonHolder {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

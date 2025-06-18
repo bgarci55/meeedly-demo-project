@@ -1,0 +1,33 @@
+.like {
+    color: rgb(146, 146, 146);
+    background-color: transparent;
+    border: transparent;
+}
+
+.liked {
+    color: black;
+    background-color: transparent;
+    border: transparent;
+}
+
+.dislike {
+    color: rgb(146, 146, 146);
+    background-color: transparent;
+    border: transparent;
+}
+
+
+.disliked {
+    color: black;
+    background-color: transparent;
+    border: transparent;
+}
+
+.like:hover {
+    color: black;
+}
+
+.dislike:hover {
+    color: black;
+}
+
