@@ -1,14 +1,5 @@
-.counterButton {
-    color: rgb(0, 0, 0);
-    background-color: rgb(148, 148, 148);
-    border-color: black;
+.holder {
     padding: 1rem;
-    text-align: center;
-    display: inline-block;
-}
-
-.counterButton:hover {
-    background-color: grey;
 }
 
 .counterButtonHolder {
@@ -17,3 +8,49 @@
     justify-content: center;
 }
 
+.counterButtonHolder button {
+    border-radius: 0.3125rem;
+    border-color: transparent;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    font-weight: 500;
+}
+
+.increaseButton {
+    background-color: rgb(72, 177, 72);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.increaseButton:hover {
+    background-color: rgb(59, 148, 59);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.decreaseButton {
+    background-color: rgb(255, 93, 93);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.decreaseButton:hover {
+    background-color: rgb(255, 64, 64);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.achievementPopup {
+    margin-top: 10px;
+    padding: 1rem;
+    background-color: rgb(165, 170, 189);
+    border-radius: 0.5rem;
+    font-weight: bold;
+    animation: fadeInOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+    0%   { opacity: 0; transform: translateY(-10px); }
+    10%  { opacity: 1; transform: translateY(0); }
+    90%  { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}

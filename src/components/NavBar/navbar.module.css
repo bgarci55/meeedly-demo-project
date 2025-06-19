@@ -26,7 +26,7 @@ nav {
 }
 
 .navItems a:hover {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(197, 197, 197);
     color: #000000;
     transition: background-color 0.3s ease, color 0.3s ease;
 }

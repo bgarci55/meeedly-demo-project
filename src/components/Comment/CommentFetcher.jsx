@@ -45,10 +45,10 @@ function CommentFetcher() {
     <div>
         {posts.length > 0 ? (
         <>
-        {posts.slice(0, visiblePosts).map((post) => (
-        <CommentHandler key = {post.id} post={post} />
-        ))}
-            <div ref={loaderRef} />
+            {posts.slice(0, visiblePosts).map((post) => (
+            <CommentHandler key = {post.id} title = {post.title} body = {post.body} likes = {post.likes} dislikes = {post.dislikes} /> // fix so that it only gives it what it requires, not everything
+            ))}
+                <div ref={loaderRef} />
         </>
         ) : (
             <p>Loading...</p>

@@ -1,67 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './likeButton.module.css';
-import likeButton from '@/assets/thumbs-up-svgrepo-com.svg'
-import dislikeButton from '@/assets/thumbs-down-svgrepo-com.svg'
+import likeButton from '@/assets/thumbs-up-svgrepo-com.svg';
+import dislikeButton from '@/assets/thumbs-down-svgrepo-com.svg';
 
-function LikeDislike({post}) {
-  const [likes, setLikes] = useState(post.reactions.likes);
-  const [liked, setLiked] = useState(false)
-  const [dislikes, setDislikes] = useState(post.reactions.dislikes);
-  const [disliked, setDisliked] = useState(false);
+function LikeDislike({ reactionsObject = [], user_id = 1 }) {
+  const [reactions, setReactions] = useState(reactionsObject);
 
-  useEffect(() => {
-    setLikes(post.reactions.likes);
-    setDislikes(post.reactions.dislikes);
-    setLiked(false);
-    setDisliked(false);
-  }, [post]);
-
-  const handleLike = () => {
-    if (liked) {
-      setLikes(likes - 1);
-      setLiked(false);
-    } else {
-      setLikes(likes + 1);
-      setLiked(true);
-      if (disliked) {
-        setDislikes(dislikes - 1);
-        setDisliked(false);
-      }
-    }
+  const getUserReaction = () => {
+    const userReaction = reactions.find(r => r.user_id === user_id);
+    return userReaction ? userReaction.reaction : null;
   };
 
-  const handleDislike = () => {
-    if (disliked) {
-      setDislikes(dislikes - 1);
-      setDisliked(false);
-    } else {
-      setDislikes(dislikes + 1);
-      setDisliked(true);
-      if (liked) {
-        setLikes(likes - 1);
-        setLiked(false);
+  const userReaction = getUserReaction();
+  const likeCount = reactions.filter(r => r.reaction === true).length;
+  const dislikeCount = reactions.filter(r => r.reaction === false).length;
+
+  const handleReaction = (type) => {
+    const newReaction = type === 'like';
+    const userExists = reactions.some(r => r.user_id === user_id);
+
+    if (userExists) {
+      const current = reactions.find(r => r.user_id === user_id);
+
+      // Toggle off if same reaction
+      if (current.reaction === newReaction) {
+        setReactions(reactions.filter(r => r.user_id !== user_id));
+        return;
       }
+
+      // Update if switching
+      const updated = reactions.map(r =>
+        r.user_id === user_id ? { ...r, reaction: newReaction } : r
+      );
+      setReactions(updated);
+    } else {
+      // New reaction
+      setReactions([...reactions, { user_id, reaction: newReaction }]);
     }
   };
 
   return (
-      <div>
-        <button onClick={handleLike} className = {!liked ? styles.like: styles.liked}>
-          <span>
-            <img src= { likeButton } width = "10" height = "10" />
-            <span> {likes}</span>
-          </span>
-        </button>
+    <div className={styles.buttonGroup}>
+      <button
+        onClick={() => handleReaction('like')}
+        className={userReaction === true ? styles.liked : styles.like}
+      >
+        <img src={likeButton} width="10" height="10" alt="Like" />
+        <span> {likeCount}</span>
+      </button>
 
-        <button onClick={handleDislike} className = {!disliked ? styles.dislike: styles.disliked}>
-          <span>
-            <img src= { dislikeButton } width = "10" height = "10" />
-            <span> {dislikes}</span>
-          </span>
-        </button>
-      </div>
+      <button
+        onClick={() => handleReaction('dislike')}
+        className={userReaction === false ? styles.disliked : styles.dislike}
+      >
+        <img src={dislikeButton} width="10" height="10" alt="Dislike" />
+        <span> {dislikeCount}</span>
+      </button>
+    </div>
   );
-};
-
+}
 
 export default LikeDislike;

@@ -14,8 +14,6 @@ function Reply() {
   return (
     <>
       <div className= {styles.buttonHolder}>
-
-        
         <button className = {styles.replyButton}>
           <img src= { replyIcon }
             width = "13"
