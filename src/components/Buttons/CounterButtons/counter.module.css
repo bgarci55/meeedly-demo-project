@@ -42,7 +42,7 @@
 .achievementPopup {
     margin-top: 10px;
     padding: 1rem;
-    background-color: rgb(165, 170, 189);
+    background-color: gold;
     border-radius: 0.5rem;
     font-weight: bold;
     animation: fadeInOut 3s ease-in-out forwards;

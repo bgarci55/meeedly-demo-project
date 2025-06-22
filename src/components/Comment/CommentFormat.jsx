@@ -3,7 +3,7 @@ import tuna from '@/assets/person-2-svgrepo-com.svg'
 import LikeDislike from '@/Components/Buttons/LikeButton/LikeButton';
 import Reply from '@/components/Buttons/ReplyButton/ReplyButton';
 
-function CommentHandler({title, body, likes, dislikes}) {
+function CommentHandler({title, body, reactionsObject}) {
 
   return (
     <>
@@ -29,7 +29,7 @@ function CommentHandler({title, body, likes, dislikes}) {
           </p>
           
           <div className = {styles.likeSection}>
-              <LikeDislike likes = {likes} dislikes = {dislikes} />
+              <LikeDislike reactionsObject = {reactionsObject} />
               <Reply />
           </div>
         </div>

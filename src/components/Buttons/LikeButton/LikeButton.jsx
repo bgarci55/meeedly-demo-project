@@ -1,60 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './likeButton.module.css';
 import likeButton from '@/assets/thumbs-up-svgrepo-com.svg';
 import dislikeButton from '@/assets/thumbs-down-svgrepo-com.svg';
 
-function LikeDislike({ reactionsObject = [], user_id = 1 }) {
-  const [reactions, setReactions] = useState(reactionsObject);
+function LikeDislike({ reactionsObject }) {
+  const user_id = 1;
+  
+  const [reactions, setReactions] = useState(reactionsObject || []);
 
-  const getUserReaction = () => {
-    const userReaction = reactions.find(r => r.user_id === user_id);
-    return userReaction ? userReaction.reaction : null;
-  };
+  const likes = reactions.filter(reaction => reaction.reaction === true);
+  const dislikes = reactions.filter(reaction => reaction.reaction === false);
 
-  const userReaction = getUserReaction();
-  const likeCount = reactions.filter(r => r.reaction === true).length;
-  const dislikeCount = reactions.filter(r => r.reaction === false).length;
+  const userReacted = reactions.find(item => item.user_id === user_id);
+  const userSavedReaction = reactions.find(item => item.user_id === user_id)?.reaction;
+  
+  // handles true or false or NULL
+  const toggleReaction = (reaction) => {
+    if (!userReacted) {
+      setReactions([...reactions, { user_id: 1, reaction: reaction }])
+      return;
+    }
 
-  const handleReaction = (type) => {
-    const newReaction = type === 'like';
-    const userExists = reactions.some(r => r.user_id === user_id);
-
-    if (userExists) {
-      const current = reactions.find(r => r.user_id === user_id);
-
-      // Toggle off if same reaction
-      if (current.reaction === newReaction) {
-        setReactions(reactions.filter(r => r.user_id !== user_id));
-        return;
+    const updated = reactions.map(item => {
+      if (item.user_id === user_id) {
+        return { ...item, reaction: reaction };
       }
 
-      // Update if switching
-      const updated = reactions.map(r =>
-        r.user_id === user_id ? { ...r, reaction: newReaction } : r
-      );
-      setReactions(updated);
-    } else {
-      // New reaction
-      setReactions([...reactions, { user_id, reaction: newReaction }]);
-    }
+      return item;
+    })
+
+    setReactions(updated)
   };
 
   return (
     <div className={styles.buttonGroup}>
       <button
-        onClick={() => handleReaction('like')}
-        className={userReaction === true ? styles.liked : styles.like}
+        onClick={() => toggleReaction(true)}
+        className={userSavedReaction === true ? styles.liked : styles.like}
       >
         <img src={likeButton} width="10" height="10" alt="Like" />
-        <span> {likeCount}</span>
+        <span> {likes.length}</span>
       </button>
 
       <button
-        onClick={() => handleReaction('dislike')}
-        className={userReaction === false ? styles.disliked : styles.dislike}
+        onClick={() => toggleReaction(false)}
+        className={userSavedReaction === false ? styles.disliked : styles.dislike}
       >
         <img src={dislikeButton} width="10" height="10" alt="Dislike" />
-        <span> {dislikeCount}</span>
+        <span> {dislikes.length}</span>
       </button>
     </div>
   );
