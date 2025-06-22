@@ -13,7 +13,7 @@ function LikeDislike({ reactionsObject }) {
 
   const userReacted = reactions.find(item => item.user_id === user_id);
   const userSavedReaction = reactions.find(item => item.user_id === user_id)?.reaction;
-  
+
   // handles true or false or NULL
   const toggleReaction = (reaction) => {
     if (!userReacted) {
@@ -21,6 +21,12 @@ function LikeDislike({ reactionsObject }) {
       return;
     }
 
+    if (userReacted.reaction === reaction) {
+      const updated = reactions.filter(item => item.user_id !== user_id);
+      setReactions(updated);
+      return;
+    }
+    
     const updated = reactions.map(item => {
       if (item.user_id === user_id) {
         return { ...item, reaction: reaction };
